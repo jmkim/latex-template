@@ -17,6 +17,17 @@
 
 \definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Homework Specific Information
+\newcommand{\hmwkTitle}{}           % Title
+\newcommand{\hmwkSubTitle}{}        % Subtitle
+\newcommand{\hmwkDueDate}{}         % Due-date
+\newcommand{\hmwkClass}{}           % Class name
+\newcommand{\hmwkClassTime}{}       % Class time
+\newcommand{\hmwkClassInstructor}{} % Class instructor
+\newcommand{\hmwkAuthorName}{}      % Author name
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % For faster processing, load language syntaxes for listings
 \lstloadlanguages{Matlab, C, C++, Java, HTML}
 
@@ -68,6 +79,7 @@
     postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}}
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % In case you need to adjust margins:
 \topmargin=-0.45in
 \evensidemargin=0in
@@ -75,15 +87,6 @@
 \textwidth=6.5in
 \textheight=9.0in
 \headsep=0.25in
-
-% Homework Specific Information
-\newcommand{\hmwkTitle}{}           % Title
-\newcommand{\hmwkSubTitle}{}        % Subtitle
-\newcommand{\hmwkDueDate}{}         % Due-date
-\newcommand{\hmwkClass}{}           % Class name
-\newcommand{\hmwkClassTime}{}       % Class time
-\newcommand{\hmwkClassInstructor}{} % Class instructor
-\newcommand{\hmwkAuthorName}{}      % Author name
 
 % Setup the header and footer
 \pagestyle{fancy}
@@ -102,69 +105,83 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Some tools
-\newcommand{\enterProblemHeader}[1]{\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
-                                    \nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak}
-\newcommand{\exitProblemHeader}[1]{\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
-                                   \nobreak\extramarks{#1}{}\nobreak}
+\newcommand{\enterProblemHeader}[1]
+{
+    \nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
+    \nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+}
+\newcommand{\exitProblemHeader}[1]
+{
+    \nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+    \nobreak\extramarks{#1}{}\nobreak
+}
 
 \newlength{\labelLength}
 \newcommand{\labelAnswer}[2]
-  {\settowidth{\labelLength}{#1}
-   \addtolength{\labelLength}{0.25in}
-   \changetext{}{-\labelLength}{}{}{}
-   \noindent\fbox{\begin{minipage}[c]{\columnwidth}#2\end{minipage}}
-   \marginpar{\fbox{#1}}
+{
+    \settowidth{\labelLength}{#1}
+    \addtolength{\labelLength}{0.25in}
+    \changetext{}{-\labelLength}{}{}{}
+    \noindent\fbox{\begin{minipage}[c]{\columnwidth}#2\end{minipage}}
+    \marginpar{\fbox{#1}
+}
 
-   % We put the blank space above in order to make sure this
-   % \marginpar gets correctly placed.
-   \changetext{}{+\labelLength}{}{}{}}
+% We put the blank space above in order to make sure this
+% \marginpar gets correctly placed.
+\changetext{}{+\labelLength}{}{}{}}
 
 \setcounter{secnumdepth}{0}
 \newcommand{\homeworkProblemName}{}
 \newcounter{homeworkProblemCounter}
 \newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]
-  {\stepcounter{homeworkProblemCounter}
-   \renewcommand{\homeworkProblemName}{#1}
-   \section{\homeworkProblemName}
-   \enterProblemHeader{\homeworkProblemName}}
-  {\exitProblemHeader{\homeworkProblemName}}
+{
+    \stepcounter{homeworkProblemCounter}
+    \renewcommand{\homeworkProblemName}{#1}
+    \section{\homeworkProblemName}
+    \enterProblemHeader{\homeworkProblemName}
+}
+{
+    \exitProblemHeader{\homeworkProblemName}
+}
 
-\newcommand{\problemAnswer}[1]
-  {\noindent\fbox{\begin{minipage}[c]{\columnwidth}#1\end{minipage}}}
-
-\newcommand{\problemLAnswer}[1]
-  {\labelAnswer{\homeworkProblemName}{#1}}
+\newcommand{\problemAnswer}[1]{\noindent\fbox{\begin{minipage}[c]{\columnwidth}#1\end{minipage}}}
+\newcommand{\problemLAnswer}[1]{\labelAnswer{\homeworkProblemName}{#1}}
 
 \newcommand{\homeworkSectionName}{}
 \newlength{\homeworkSectionLabelLength}{}
 \newenvironment{homeworkSection}[1]
-  {% We put this space here to make sure we're not connected to the above.
-   % Otherwise the changetext can do funny things to the other margin
+{
+    % We put this space here to make sure we're not connected to the above.
+    % Otherwise the changetext can do funny things to the other margin
 
-   \renewcommand{\homeworkSectionName}{#1}
-   \settowidth{\homeworkSectionLabelLength}{\homeworkSectionName}
-   \addtolength{\homeworkSectionLabelLength}{0.25in}
-   \changetext{}{-\homeworkSectionLabelLength}{}{}{}
-   \subsection{\homeworkSectionName}
-   \enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]}}
-  {\enterProblemHeader{\homeworkProblemName}
+    \renewcommand{\homeworkSectionName}{#1}
+    \settowidth{\homeworkSectionLabelLength}{\homeworkSectionName}
+    \addtolength{\homeworkSectionLabelLength}{0.25in}
+    \changetext{}{-\homeworkSectionLabelLength}{}{}{}
+    \subsection{\homeworkSectionName}
+    \enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]}
+}
+{
+    \enterProblemHeader{\homeworkProblemName}
 
-   % We put the blank space above in order to make sure this margin
-   % change doesn't happen too soon (otherwise \sectionAnswer's can
-   % get ugly about their \marginpar placement.
-   \changetext{}{+\homeworkSectionLabelLength}{}{}{}}
+    % We put the blank space above in order to make sure this margin
+    % change doesn't happen too soon (otherwise \sectionAnswer's can
+    % get ugly about their \marginpar placement.
+    \changetext{}{+\homeworkSectionLabelLength}{}{}{}
+}
 
 \newcommand{\sectionAnswer}[1]
-  {% We put this space here to make sure we're disconnected from the previous
-   % passage
+{
+    % We put this space here to make sure we're disconnected from the previous
+    % passage
 
-   \noindent\fbox{\begin{minipage}[c]{\columnwidth}#1\end{minipage}}
-   \enterProblemHeader{\homeworkProblemName}\exitProblemHeader{\homeworkProblemName}
-   \marginpar{\fbox{\homeworkSectionName}}
+    \noindent\fbox{\begin{minipage}[c]{\columnwidth}#1\end{minipage}}
+    \enterProblemHeader{\homeworkProblemName}\exitProblemHeader{\homeworkProblemName}
+    \marginpar{\fbox{\homeworkSectionName}}
 
-   % We put the blank space above in order to make sure this
-   % \marginpar gets correctly placed.
-   }
+    % We put the blank space above in order to make sure this
+    % \marginpar gets correctly placed.
+}
 
 %%% I think \captionwidth (commented out below) can go away
 %%%
@@ -188,8 +205,9 @@
 % The second parameter is the width of the figure normalized to column width
 %   (e.g. 0.5 for half a column, 0.75 for 75% of the column)
 % The third parameter is the caption.
-\newcommand{\scalefig}[3]{
-  \begin{figure}[ht!]
+\newcommand{\scalefig}[3]
+{
+    \begin{figure}[ht!]
     % Requires \usepackage{graphicx}
     \centering
     \includegraphics[width=#2\columnwidth]{#1}
@@ -198,27 +216,23 @@
     %\captionwidth{#2\columnwidth}
     \caption{#3}
     \label{#1}
-  \end{figure}}
+    \end{figure}
+}
 
 % Includes a code.
 % The first parameter is the language name.
 % The second parameter is the label, which also is the name of the script.
 % The third parameter is the optional caption.
-\newcommand{\includecode}[3]
-{
-    \begin{itemize}\item[]\lstinputlisting[style=#1,label=#2,caption=#3]{#2}\end{itemize}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+% Example: \includecode{C}{hello_world.c}{Hello, world!}
+\newcommand{\includecode}[3]{\begin{itemize}\item[]\lstinputlisting[style=#1,label=#2,caption=#3]{#2}\end{itemize}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Make title
 \title{\vspace{2in}\textmd{\textbf{\hmwkClass:\ \hmwkTitle\ifthenelse{\equal{\hmwkSubTitle}{}}{}{\\\hmwkSubTitle}}}\\\normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\\vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}\vspace{3in}}
 \date{}
 \author{\textbf{\hmwkAuthorName}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
 % Uncomment the \SetHangulFonts to use Hangul fonts
