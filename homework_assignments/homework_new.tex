@@ -56,8 +56,9 @@
 \lstset
 {
     % Put style for all languages here
+    % Box style
     frame=single,
-
+    % Code style
     basicstyle=\small\ttfamily,
     keywordstyle=[1]\color{Blue}\bf,
     keywordstyle=[2]\color{Purple},
@@ -65,18 +66,16 @@
     identifierstyle=,
     commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\small,
     stringstyle=\color{Purple},
-
     showstringspaces=false,
     tabsize=4,
-
-    numbers=left,
-    firstnumber=1,
-    numberstyle=\tiny\color{Blue},
-    stepnumber=5,
-
     % Word wrap (with red arrow)
     breaklines=true,
-    postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}}
+    postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}},
+    % Line number style
+    numbers=left,
+    numberstyle=\tiny\color{Blue},
+    firstnumber=1,
+    stepnumber=5
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
